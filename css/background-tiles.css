@@ -1,0 +1,8 @@
+.background-tile-container {
+
+}
+
+.background-tile-container .background-tile {
+  display: inline-block;
+  float: left;
+} 
