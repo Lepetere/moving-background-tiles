@@ -14,8 +14,11 @@ $().ready(function () {
 		var backgroundSquareWidth = windowWidth / horizontalNumberOfSquares;
 		var backgroundSquareHeight = windowHeight / verticalNumberOfSquares;
 
-		$('body').append('<div class="background-tile-container"></div>');
+		if (! $('.background-tile-container').length ) {
+			$('body').append('<div class="background-tile-container"></div>');
+		}
 		var squareContainer = $('.background-tile-container').first();
+		squareContainer.empty();
 		// add the appropriate number of squares to fill the background
 		for ( i = 0; i < horizontalNumberOfSquares * verticalNumberOfSquares; i++ ) {
 			var square = $(squareContainer).append('<div class="background-tile">hallo</div>').children('.background-tile').last();
