@@ -21,7 +21,7 @@ $().ready(function () {
 		squareContainer.empty();
 		// add the appropriate number of squares to fill the background
 		for ( i = 0; i < horizontalNumberOfSquares * verticalNumberOfSquares; i++ ) {
-			var square = $(squareContainer).append('<div class="background-tile">hallo</div>').children('.background-tile').last();
+			var square = $(squareContainer).append('<div class="background-tile"></div>').children('.background-tile').last();
 			$(square).css('width', backgroundSquareWidth);
 			$(square).css('height', backgroundSquareHeight);
 		}
@@ -29,7 +29,9 @@ $().ready(function () {
 
 	var alterBackgroundPosition = function (event) {
         var event = event || window.event; // IE-ism
-        console.log("x mouse potition: " + event.clientX + "; y mouse potition: " + event.clientY);
+        $('.background-tile-container').first().children().each(function (index, element) {
+        	$(element).css('background-position', event.clientX + "px " + event.clientY + "px");
+        });
     };
 
 	// execute makeBackgroundSquares to add the squares to the background and assign it to window.onresize
