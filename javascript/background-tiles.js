@@ -1,3 +1,27 @@
+// Helper method, retrieves query string as a key/value hash
+// this is taken from https://github.com/hakimel/reveal.js/blob/master/js/reveal.js
+window.getQueryHash = function() {
+	var query = {};
+
+	location.search.replace( /[A-Z0-9]+?=([\w\.%-]*)/gi, function(a) {
+		query[ a.split( '=' ).shift() ] = a.split( '=' ).pop();
+	} );
+
+	// Basic deserialization
+	for( var i in query ) {
+		var value = query[ i ];
+
+		query[ i ] = unescape( value );
+
+		if( value === 'null' ) query[ i ] = null;
+		else if( value === 'true' ) query[ i ] = true;
+		else if( value === 'false' ) query[ i ] = false;
+		else if( value.match( /^\d+$/ ) ) query[ i ] = parseFloat( value );
+	}
+
+	return query;
+};
+
 $().ready(function () {
 
 	var BACKGROUNDSQUARE_MAX_WIDTH = 120;
@@ -19,13 +43,19 @@ $().ready(function () {
 		}
 		var squareContainer = $('.background-tile-container').first();
 		squareContainer.empty();
+		// set width and height of the square container to match the window dimensions
 		squareContainer.css('width', windowWidth);
 		squareContainer.css('height', windowHeight);
+		// if a url for a background image is appended to the url, use that as background image
+		var queryHash = window.getQueryHash();console.log(queryHash);
 		// add the appropriate number of squares to fill the background
 		for ( i = 0; i < horizontalNumberOfSquares * verticalNumberOfSquares; i++ ) {
 			var square = $(squareContainer).append('<div class="background-tile"></div>').children('.background-tile').last();
 			$(square).css('width', backgroundSquareWidth);
 			$(square).css('height', backgroundSquareHeight);
+			if (queryHash['backgroundImage'].length) {
+			$(square).css('background-image', 'url(' + queryHash['backgroundImage'] + ')');
+		}
 		}
 	};
 
