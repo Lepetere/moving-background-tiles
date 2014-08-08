@@ -19,6 +19,8 @@ $().ready(function () {
 		}
 		var squareContainer = $('.background-tile-container').first();
 		squareContainer.empty();
+		squareContainer.css('width', windowWidth);
+		squareContainer.css('height', windowHeight);
 		// add the appropriate number of squares to fill the background
 		for ( i = 0; i < horizontalNumberOfSquares * verticalNumberOfSquares; i++ ) {
 			var square = $(squareContainer).append('<div class="background-tile"></div>').children('.background-tile').last();
