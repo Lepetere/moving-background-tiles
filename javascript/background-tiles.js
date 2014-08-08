@@ -12,7 +12,7 @@ $().ready(function () {
 		var verticalNumberOfSquares = Math.floor(windowHeight / BACKGROUNDSQUARE_MAX_HEIGHT);
 
 		var backgroundSquareWidth = windowWidth / horizontalNumberOfSquares;
-		var backgroundSquareHeight = windowHeight / verticalNumberOfSquares;
+		var backgroundSquareHeight = Math.floor(windowHeight / verticalNumberOfSquares) + 1;
 
 		if (! $('.background-tile-container').length ) {
 			$('body').append('<div class="background-tile-container"></div>');
