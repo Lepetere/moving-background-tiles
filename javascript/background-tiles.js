@@ -32,8 +32,8 @@ $().ready(function () {
 		var windowWidth = window.innerWidth;
 		var windowHeight = window.innerHeight;
 
-		var horizontalNumberOfSquares = Math.floor(windowWidth / BACKGROUNDSQUARE_MAX_WIDTH);
-		var verticalNumberOfSquares = Math.floor(windowHeight / BACKGROUNDSQUARE_MAX_HEIGHT);
+		var horizontalNumberOfSquares = Math.floor(windowWidth / BACKGROUNDSQUARE_MAX_WIDTH) + 1;
+		var verticalNumberOfSquares = Math.floor(windowHeight / BACKGROUNDSQUARE_MAX_HEIGHT) + 1;
 
 		var backgroundSquareWidth = windowWidth / horizontalNumberOfSquares;
 		var backgroundSquareHeight = Math.floor(windowHeight / verticalNumberOfSquares) + 1;
